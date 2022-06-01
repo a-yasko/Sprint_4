@@ -6,7 +6,7 @@ public class Account {
     this.name = name;
   }
 
-  public boolean checkNameToEmboss() {
+  private boolean checkOneSpace() {
     boolean isOneSpace;
 
     if (name.trim().indexOf(" ") == name.trim().lastIndexOf(" ")) {
@@ -15,7 +15,11 @@ public class Account {
       isOneSpace = false;
     }
 
-    if (!name.isBlank() && name.contains(" ") && name.length() >= 3 && name.length() <= 19 && isOneSpace && !name.startsWith(" ") && !name.endsWith(" ")) {
+    return isOneSpace;
+  }
+
+  public boolean checkNameToEmboss() {
+    if ((name != null) &&  !name.isBlank() && name.contains(" ") && name.length() >= 3 && name.length() <= 19 && checkOneSpace() && !name.startsWith(" ") && !name.endsWith(" ")) {
       return true;
     } else {
       return false;
